@@ -1,3 +1,9 @@
+:root {
+  --clr-bg: lightcoral;
+  --clr-accent: red;
+  --clr-light: white;
+  --clr-dark: black;
+}
 body {
   margin-right: auto;
   margin-left: auto;
@@ -12,10 +18,11 @@ body {
     height: 300px;
   }
   section {
+    height: 100vh; /* means 100% of viewport height, or all of screeens height. Good for scaling site to screen size*/
     margin-top: 40px;
     margin-bottom: 40px;
     padding: 20px;
-    background-color: lightcoral;
+    background-color: var(--clr-bg);
   }
   .container {
     display: flex;
@@ -24,9 +31,15 @@ body {
   }
   .text {
     margin-right: 20px; /* Spacing between image and text inside. To be used inside container class */
-    font-size: xx-large;
+    font-size: x-large;
   }
- 
+  #navbar {
+    position: fixed;
+    top: 0px;
+    width: 100%
+  }
+
+
 
 /* animation related css */
 
@@ -40,4 +53,40 @@ body {
   .fade-in {
     opacity: 1;
     transform: scale(1);
+  }
+
+  .btn {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.5em 1em;
+    color: black;
+    background-color: var(--clr-bg);
+    border: 5px solid var(--clr-accent);
+    border-radius: 5px;
+    
+    
+
+    /* Can use this or shorthand.
+    #transition-property: transform;
+    #transition-duration: 0.3s;
+    #transition-timing-function:ease;
+    #transition-delay: 0s;
+
+    shorthand form.
+    #transition: transform 0.3s ease 0s;
+
+    even shorter, since ease and 0s are defaults for timing-function and delay. Additionally,
+    more transition properties can be appended with commas seperating them */
+
+    transition: transform 0.5s, background-color 0.3s, color 0.3s;
+
+    /*or you can just use all property to apply animation to all
+    #transition: all 0.3s;*/
+
+  }
+  .btn:hover {
+    transform: translatey(+10px);
+    background-color: var(--clr-accent);
+    color: var(--clr-light);
+
   }

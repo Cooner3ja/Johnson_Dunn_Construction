@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //image load in animation test
-const images = document.querySelectorAll('.uniformImg');
+/*const images = document.querySelectorAll('.uniformImg');
 
 const observerOptions = {
     root: null,
@@ -35,6 +35,8 @@ const fadeInOnScroll = (entries, observer) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('fade-in');
             observer.unobserve(entry.target);
+        } else {
+            entry.target.classList.remove('fade-in');
         }
     });
 };
@@ -44,4 +46,29 @@ const observer = new IntersectionObserver(fadeInOnScroll, observerOptions);
 
 images.forEach(image => {
     observer.observe(image);
+});*/
+
+//Load in animations
+
+const observer = new IntersectionObserver((entries) =>{
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('enter');
+            entry.target.classList.remove('exit');
+        } else {
+            entry.target.classList.remove('enter');
+            entry.target.classList.add('exit')
+        }
+    });
 });
+
+const backgroundElement = document.querySelectorAll('.backgroundAnimation');
+const headerElements = document.querySelectorAll('.headerAnimation');
+const textElements = document.querySelectorAll('.textAnimation');
+const imageElements = document.querySelectorAll('.imageAnimation');
+
+backgroundElement.forEach((element) => observer.observe(element));
+headerElements.forEach((element) => observer.observe(element));
+textElements.forEach((element) => observer.observe(element));
+imageElements.forEach((element) => observer.observe(element));

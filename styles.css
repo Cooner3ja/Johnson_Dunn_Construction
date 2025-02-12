@@ -11,33 +11,37 @@ body {
   font-family: proxima-nova, sans-serif;
   
 }
-.image-row {
-    display: flex;
-    justify-content: space-between; /* this will add equal space between each image */
-    width: 400px;
-    height: 300px;
-  }
-  section {
-    height: 100vh; /* means 100% of viewport height, or all of screeens height. Good for scaling site to screen size*/
+/*section {
+   min-height: 100vh; means 100% of viewport height, or all of screeens height minimum. Good for scaling site to screen size.
     margin-top: 40px;
     margin-bottom: 40px;
     padding: 20px;
-    background-color: var(--clr-bg);
-  }
-  .container {
+}*/
+.content {
+    min-height: 100vh; /* means 100% of viewport height, or all of screeens height minimum. Good for scaling site to screen size.*/
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+.container {
     display: flex;
     align-items: center; /* Verticle Alignment of items */
 
-  }
-  .text {
+}
+.heading {
+    font-weight: bold;
+    font-size: xx-large;
+}
+.text {
     margin-right: 20px; /* Spacing between image and text inside. To be used inside container class */
     font-size: x-large;
-  }
-  #navbar {
+}
+#navbar {
     position: fixed;
     top: 0px;
     width: 100%
-  }
+}
 
 
 
@@ -46,15 +50,7 @@ body {
   .uniformImg {
     width: 550px;
     height: 550px;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 1s ease, transform 1s ease;
   }
-  .fade-in {
-    opacity: 1;
-    transform: scale(1);
-  }
-
   .btn {
     font-size: 1rem;
     font-weight: 700;
@@ -84,9 +80,87 @@ body {
     #transition: all 0.3s;*/
 
   }
+
   .btn:hover {
     transform: translatey(+10px);
     background-color: var(--clr-accent);
     color: var(--clr-light);
 
+  }
+  /*Content Background animation*/
+.backgroundAnimation {
+  transition: background-color 2500ms ease 0ms;      
+}
+.backgroundAnimation.enter { /*.enter denotes the changes to original animation class that will be animated*/
+  background-color: var(--clr-bg);
+}
+.backgroundAnimation.exit { /*.exit denotes the reverision of changes to original attributes, along side the timings for the exit animation*/
+  background-color: var(--clr-light);
+  transition: background-color 500ms ease 0ms;
+}
+/*Header Animation*/
+.headerAnimation {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: opacity 2500ms ease 1000ms,
+              filter 2500ms ease 1000ms,
+              transform 2500ms ease 1000ms;
+}
+.headerAnimation.enter {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+.headerAnimation.exit {
+  opacity: 0;
+  filter: blur(5px);
+  transform: TranslateX(-100%);
+  transition: opacity 500ms ease 0ms,
+              filter 500ms ease 0ms,
+              transform 500ms ease 0ms;
+}
+/*Text animation*/
+.textAnimation {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: opacity 2500ms ease 2000ms, 
+              filter 2500ms ease 2000ms, 
+              transform 2500ms ease 2000ms;
+}
+.textAnimation.enter {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+.textAnimation.exit {
+  opacity: 0;
+  filter: blur(5px);
+  transform: TranslateX(-100%);
+  transition: opacity 500ms ease 0ms,
+              filter 500ms ease 0ms,
+              transform 500ms ease 0ms;
+}
+  /*Image animation*/
+  .imageAnimation {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(+100%);
+    transition: opacity 2500ms ease 2500ms, 
+                filter 2500ms ease 2500ms, 
+                transform 2500ms ease 2500ms;
+  }
+  .imageAnimation.enter { 
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  } 
+  .imageAnimation.exit {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(100%);
+    transition: opacity 500ms ease 0ms,
+                filter 500ms ease 0ms,
+                transform 500ms ease 0ms;
   }
